@@ -11,10 +11,10 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Portfolio">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="apple-touch-icon" href="assets/assets/images/personal/m_logo.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/personal/m_logo.png"/>
+  <link rel="icon" type="image/png" href="assets/assets/images/personal/m_logo.png"/>
 
   <title>My Awesome Portfolio</title>
   <link rel="manifest" href="manifest.json">
@@ -30,10 +30,7 @@
       }
     }
   </script>
-<script>
-  // The value below is injected by flutter build, do not touch.
-  var serviceWorkerVersion ="{{flutter_service_worker_version}}";
-</script>
+
 <!-- This script adds the flutter initialization JS code -->
 <script src="https://unpkg.com/canvaskit-wasm@0.37.1/bin/canvaskit.js"></script>
 <link rel="preload" href="https://unpkg.com/canvaskit-wasm@0.37.1/bin/canvaskit.wasm" as="fetch" crossOrigin="anonymous">
@@ -104,10 +101,12 @@
     element.addEventListener('animationiteration', listener, false);
 
   window.addEventListener('load', function(ev) {
+    {{flutter_js}}
+    {{flutter_build_config}}
     // Download main.dart.js
-    _flutter.loader.loadEntrypoint({
+    _flutter.loader.load({
       serviceWorker: {
-        serviceWorkerVersion: serviceWorkerVersion,
+        serviceWorkerVersion: '{{flutter_service_worker_version}}',
       },
       onEntrypointLoaded: function(engineInitializer) {
         engineInitializer.initializeEngine().then(function(appRunner) {
